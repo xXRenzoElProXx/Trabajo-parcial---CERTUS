@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <!-- Metadatos -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro e Inicio de Sesión</title>
+    <meta name="author" content="Renzo Crisanto" />
+    <link rel="shortcut icon" href="Imágenes/Logo.png" type="image/x-icon">
+    <!-- Estilos Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Iconos Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" href="Estilos/registro.css">
+</head>
+
+<body>
+    <!-- Contenedor principal -->
+    <div class="container">
+        <!-- Tarjeta de registro e inicio de sesión -->
+        <div class="card">
+            <div class="card-header">
+                <!-- Título -->
+                <h3>Registro e Inicio de Sesión</h3>
+            </div>
+            <div class="card-body">
+                <!-- Formulario de registro -->
+                <div id="registro">
+                    <form>
+                        <div class="form-group">
+                            <label for="nombreRegistro">Nombre</label>
+                            <input type="text" class="form-control" id="nombreRegistro" required>
+                        </div>
+                        <!-- Formulario de registro (continuación) -->
+                        <!-- Input para el correo electrónico -->
+                        <div class="form-group">
+                            <label for="emailRegistro">Correo Electrónico</label>
+                            <input type="email" class="form-control" id="emailRegistro" required>
+                        </div>
+                        <!-- Input para la contraseña -->
+                        <div class="form-group">
+                            <label for="passwordRegistro">Contraseña</label>
+                            <div class="input-group">
+                                <input type="password" class="form-control" id="passwordRegistro" required>
+                                <!-- Botón para mostrar/ocultar la contraseña -->
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-secondary" type="button" id="verPasswordRegistro"
+                                        onclick="verPassword('passwordRegistro', 'verPasswordRegistro')"><i
+                                            class="fas fa-eye"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Botón para registrarse -->
+                        <button type="submit" class="btn btn-primary btn-block">Registrarse</button>
+                    </form>
+                    <!-- Enlace para iniciar sesión -->
+                    <hr>
+                    <p class="text-center">¿Ya tienes una cuenta? <a onclick="mostrarInicioSesion()">Inicia
+                            sesión</a></p>
+                </div>
+
+                <!-- Formulario de inicio de sesión -->
+                <div id="inicioSesion" style="display: none;">
+                    <form>
+                        <!-- Input para el correo electrónico -->
+                        <div class="form-group">
+                            <label for="emailInicio">Correo Electrónico</label>
+                            <input type="email" class="form-control" id="emailInicio" required>
+                        </div>
+                        <!-- Input para la contraseña -->
+                        <div class="form-group">
+                            <label for="passwordInicio">Contraseña</label>
+                            <div class="input-group">
+                                <input type="password" class="form-control" id="passwordInicio" required>
+                                <!-- Botón para mostrar/ocultar la contraseña -->
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-secondary" type="button" id="verPasswordInicio"
+                                        onclick="verPassword('passwordInicio', 'verPasswordInicio')"><i
+                                            class="fas fa-eye"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Botón para iniciar sesión -->
+                        <button type="submit" class="btn btn-primary btn-block">Iniciar Sesión</button>
+                    </form>
+                    <!-- Enlace para registrarse -->
+                    <hr>
+                    <p class="text-center">¿No tienes una cuenta? <a onclick="mostrarRegistro()">Regístrate</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Botón para regresar -->
+    <a href="index.html" class="btn btn-secondary btn-regresar">Regresar</a>
+
+    <!-- Scripts JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+
+    <!-- Funciones JavaScript -->
+    <script>
+        // Función para mostrar el formulario de inicio de sesión y ocultar el de registro
+        function mostrarInicioSesion() {
+            document.getElementById("registro").style.display = "none";
+            document.getElementById("inicioSesion").style.display = "block";
+        }
+
+        // Función para mostrar el formulario de registro y ocultar el de inicio de sesión
+        function mostrarRegistro() {
+            document.getElementById("registro").style.display = "block";
+            document.getElementById("inicioSesion").style.display = "none";
+        }
+
+        // Función para mostrar/ocultar la contraseña
+        function verPassword(id, botonId) {
+            var input = document.getElementById(id);
+            var boton = document.getElementById(botonId);
+            if (input.type === "password") {
+                input.type = "text";
+                boton.innerHTML = '<i class="fas fa-eye-slash"></i>';
+            } else {
+                input.type = "password";
+                boton.innerHTML = '<i class="fas fa-eye"></i>';
+            }
+        }
+    </script>
+</body>
+
+</html>
